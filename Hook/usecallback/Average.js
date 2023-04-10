@@ -19,7 +19,7 @@ const Average = () => {
     const nextList = list.concat(parseInt(number));
     setList(nextList);
     setNumber("");
-  }, [number, list]); // number 헉은 list가 바뀌었을 때만 함수 생성
+  }, [number, list]); // number 헉은 list가 바뀌었을 때만 함수생성
 
   const avg = useMemo(() => getAverage(list), [list]);
 
