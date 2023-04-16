@@ -16,8 +16,8 @@ function App() {
       </ul>
       <hr />
       <Routes>
-        <Route path="/" Component={Home} exact={true} />
-        <Route path="about" Component={About} />
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
       </Routes>
     </div>
   );
