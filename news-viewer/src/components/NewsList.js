@@ -28,7 +28,7 @@ const NewsList = () => {
         const response = await axios.get(
           'https://newsapi.org/v2/top-headlines?country=kr&apiKey=a112ac2d9a114393b58b9430fb41a2ec',
         );
-        setArticles(response.data.article);
+        setArticles(response.data.articles);
       } catch (e) {
         console.log(e);
       }
@@ -42,6 +42,10 @@ const NewsList = () => {
     return <NewsListBlock>대기중 ...</NewsListBlock>;
   }
   // 아직 articles 값이 설정되지 않았을 때
+  if (!articles) {
+    return null;
+  }
+  // articles 값이 유효할 때
   return (
     <NewsListBlock>
       {articles.map((article) => (

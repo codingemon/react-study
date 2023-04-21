@@ -30,7 +30,7 @@ const NewsItemBlock = styled.div`
   }
 `;
 
-const NewsItem = (article) => {
+const NewsItem = ({ article }) => {
   const { title, description, url, urlToImage } = article;
   return (
     <NewsItemBlock>
@@ -41,7 +41,7 @@ const NewsItem = (article) => {
           </a>
         </div>
       )}
-      <div className="contnents">
+      <div className="contents">
         <h2>
           <a href={url} target="_blank" rel="noopener noreferrer">
             {title}
