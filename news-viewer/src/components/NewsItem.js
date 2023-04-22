@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const NewsItemBlock = styled.div`
   display: flex;
-  .thumbnail {
+  .thumbail {
+    margin-right: 1rem;
     img {
       display: block;
       width: 160px;
@@ -30,6 +31,7 @@ const NewsItemBlock = styled.div`
   }
 `;
 
+// 현재 urlToImage, description은 null 값이라서 사진과 내용이 나타나지않습니다..
 const NewsItem = ({ article }) => {
   const { title, description, url, urlToImage } = article;
   return (
