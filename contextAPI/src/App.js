@@ -1,15 +1,15 @@
-import "./App.css";
+import React from "react";
 import ColorBox from "./components/ColorBox";
-import ColorContext from "./contexts/Color";
+import { ColorProvider } from "./contexts/Color";
 
-function App() {
+const App = () => {
   return (
-    <ColorContext.Provider value={{ color: "red" }}>
+    <ColorProvider>
       <div>
         <ColorBox />
       </div>
-    </ColorContext.Provider>
+    </ColorProvider>
   );
-}
+};
 
 export default App;
