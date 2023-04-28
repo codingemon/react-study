@@ -1,10 +1,10 @@
 import React, { createContext, useState } from "react";
 
 const ColorContext = createContext({
-  state: { color: "black", subcolor: "red" },
+  state: { color: " black ", subcolor: "red" },
   actions: {
     setColor: () => {},
-    setSubColor: () => {},
+    setSubcolor: () => {},
   },
 });
 
@@ -14,17 +14,16 @@ const ColorProvider = ({ children }) => {
 
   const value = {
     state: { color, subcolor },
-    action: { setColor, setSubcolor },
+    actions: { setColor, setSubcolor },
   };
+
   return (
     <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
   );
 };
 
-// const ColorConsumer = colorContext.Consumer와 같은 의미
-const { Consumer: ColorConsumer} = ColorContext;
+const { Consumer: ColorConsumer } = ColorContext;
 
-// ColorProvider와 ColorConsumer 내보내기
-const { ColorProvider, ColorConsumer};
+export { ColorProvider, ColorConsumer };
 
 export default ColorContext;
