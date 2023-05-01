@@ -33,3 +33,42 @@ export const remove = (id) => ({
   type: REMOVE,
   id,
 });
+
+// 초기 상태 및 리듀서 함수 만들기
+
+const initialState = {
+  input: '',
+  todos: [
+    {
+      id: 1,
+      text: '리덕스 초기 배우기',
+      done: true,
+    },
+    {
+      id: 2,
+      text: '리액트와 리덕스 사용하기',
+      done: false,
+    },
+  ],
+};
+
+function todos(state = initialState, action) {
+  switch (action.type) {
+    case CHANGE_INPUT:
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === action.id ? { ...todo, done: !todo.done } : todo,
+        ),
+      };
+    case REMOVE:
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.id),
+      };
+    default:
+      return state;
+  }
+}
+
+export default todos;
