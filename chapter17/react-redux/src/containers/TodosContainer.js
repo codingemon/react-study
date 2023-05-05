@@ -17,14 +17,15 @@ const TodosContainer = () => {
   const onInsert = useCallback((text) => dispatch(insert(text)), [dispatch]);
   const onToggle = useCallback((id) => dispatch(toggle(id)), [dispatch]);
   const onRemove = useCallback((id) => dispatch(remove(id)), [dispatch]);
+
   return (
     <Todos
       input={input}
       todos={todos}
       onChangeInput={onChangeInput}
       onInsert={onInsert}
-      onToggle={onToggle}
       onRemove={onRemove}
+      onToggle={onToggle}
     />
   );
 };
