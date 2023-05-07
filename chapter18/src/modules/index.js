@@ -1,7 +1,7 @@
-import { combinReducers } from "redux";
 import counter from "./counter";
+import { combineReducers } from "redux";
 
-const rootReducer = combinReducers({
+const rootReducer = combineReducers({
   counter,
 });
 
