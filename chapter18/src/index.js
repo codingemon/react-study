@@ -13,7 +13,7 @@ import loggerMiddleware from "./lib/loggerMiddleware";
 // 현재는 " configureStore " 를 사용하라고 권장하고 있다.
 // createStore 대신 redux/toolkit을 사용했을 때의 장점
 // 1. redux-toolkit을 사용하므로써 actions를 작성해주지 않아도 된다.
-// 2. 데이터를 변경할 때도 Object.assign()을 통해 새로운 데이터를 담은 객체를 만드는 번거로운 과정을 거치지 않아도 된다.
+// 2. 데이터를 변경할 때도 Object.assign()을 통해 새로운 데이터를 담은 객체를 만드는 번거로운 과정을 거치지 않아도 된다...
 const store = createStore(rootReducer, applyMiddleware(loggerMiddleware));
 
 ReactDOM.render(
