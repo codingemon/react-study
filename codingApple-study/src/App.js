@@ -15,7 +15,6 @@ function App() {
   ]);
   let [logo, setLogo] = useState("도라에몽 블로그");
   let [like, setLike] = useState(0);
-  let [likeWomen, setLikeWomen] = useState("여자코트 추천");
 
   return (
     <div className="App">
@@ -23,8 +22,27 @@ function App() {
         <h4>{logo}</h4>
       </div>
       <div className="list">
+        <div>
+          <button
+            onClick={() => {
+              let copy = [...title];
+              copy.sort();
+              setTitle(copy);
+            }}
+          >
+            가나다순정렬
+          </button>
+          <button
+            onClick={() => {
+              let copy = [...title]; // ... 문법 괄호를 벗겨주세요.
+              copy[0] = "도라에몽 추천";
+              setTitle(copy);
+            }}
+          >
+            글수정
+          </button>
+        </div>
         <h4>
-          <button onClick={() => setLikeWomen(title[0])}>버튼</button>
           {title[0]}
           <span
             onClick={() => {
