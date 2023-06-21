@@ -2,6 +2,21 @@
 import { useState } from "react";
 import "./App.css";
 
+// --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---
+// 다른 함수 밖에 만들어라
+
+// const Modal = () = {}
+
+function Modal() {
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  );
+}
+
 function App() {
   // 자료를 잠깐 보관,저장할 땐 state 써도 된다
   // 1. import{useState} 2.useState{보관할 자료} 3.let[작명,작명]
@@ -63,6 +78,9 @@ function App() {
         <h4>{title[2]}</h4>
         <p>2월 17일 발행</p>
       </div>
+
+      {/* --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---  */}
+      <Modal />
     </div>
   );
 }
