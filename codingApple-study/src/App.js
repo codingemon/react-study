@@ -30,6 +30,7 @@ function App() {
   ]);
   let [logo, setLogo] = useState("도라에몽 블로그");
   let [like, setLike] = useState(0);
+  let [modal, setModal] = useState(false);
 
   return (
     <div className="App">
@@ -75,12 +76,21 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4>{title[2]}</h4>
+        <h4
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
+          {title[2]}
+        </h4>
         <p>2월 17일 발행</p>
       </div>
 
       {/* --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---  */}
-      <Modal />
+      {
+        //삼항연산자 -> 조건식 ? 참일때 실행할 코드 : 거짓일 때 실행할 코드
+        modal == true ? <Modal /> : null
+      }
     </div>
   );
 }
