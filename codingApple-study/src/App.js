@@ -29,12 +29,15 @@ function App() {
     "도라에몽 성지순례",
   ]);
   let [logo, setLogo] = useState("도라에몽 블로그");
-  let [like, setLike] = useState(0);
+  let [like, setLike] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
+  // [1, 2, 3].map(function (a) {
+  //   return "1234512345";
+  // });
 
   return (
     <div className="App">
-      <div className="black-nav">
+      {/* <div className="black-nav">
         <h4>{logo}</h4>
       </div>
       <div className="list">
@@ -84,7 +87,33 @@ function App() {
           {title[2]}
         </h4>
         <p>2월 17일 발행</p>
-      </div>
+      </div> */}
+
+      {/* map을 이용 */}
+      {title.map(function (a, i) {
+        return (
+          <div className="list" key={i}>
+            <h4
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              {title[i]}
+              <span
+                onClick={() => {
+                  let copy = { ...like };
+                  copy[i] = copy[i] + 1;
+                  setLike(copy);
+                }}
+              >
+                👍
+              </span>
+              {like[i]}
+            </h4>
+            <p>2월 17일 발행</p>
+          </div>
+        );
+      })}
 
       {/* --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---  */}
       {
