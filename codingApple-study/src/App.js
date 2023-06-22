@@ -18,19 +18,20 @@ function App() {
     "도라에몽 스페셜",
     "도라에몽 성지순례",
   ]);
-  let [titleChange, setTitleChange] = useState("도라에몽 추천");
   let [logo, setLogo] = useState("도라에몽 블로그");
   let [like, setLike] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
+  let [modalTitle, setModalTitle] = useState(0);
   // [1, 2, 3].map(function (a) {
   //   return "1234512345";
   // });
 
   return (
     <div className="App">
-      {/* <div className="black-nav">
+      <div className="black-nav">
         <h4>{logo}</h4>
       </div>
+      {/*
       <div className="list">
         <div>
           <button
@@ -79,7 +80,6 @@ function App() {
         </h4>
         <p>2월 17일 발행</p>
       </div> */}
-
       {/* map을 이용 */}
       {title.map(function (a, i) {
         return (
@@ -87,6 +87,7 @@ function App() {
             <h4
               onClick={() => {
                 setModal(!modal);
+                setModalTitle(i);
               }}
             >
               {title[i]}
@@ -109,7 +110,7 @@ function App() {
       {/* --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---  */}
       {
         //삼항연산자 -> 조건식 ? 참일때 실행할 코드 : 거짓일 때 실행할 코드
-        modal == true ? <Modal setTitle={setTitle} title={title} /> : null
+        modal == true ? <Modal modalTitle={modalTitle} title={title} /> : null
       }
     </div>
   );
@@ -118,20 +119,10 @@ function App() {
 function Modal(props) {
   return (
     <div className="modal">
-      <h4>{props.title[0]}</h4>
+      <h4>{props.title[props.modalTitle]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
-      <button
-        onClick={() => {
-          props.setTitle([
-            "도라에몽 추천",
-            "도라에몽 중요하이라이트",
-            "도라에몽 굿즈",
-          ]);
-        }}
-      >
-        글수정
-      </button>
+      <button>글수정</button>
     </div>
   );
 }
