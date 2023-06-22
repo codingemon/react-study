@@ -7,16 +7,6 @@ import "./App.css";
 
 // const Modal = () = {}
 
-function Modal() {
-  return (
-    <div className="modal">
-      <h4>제목</h4>
-      <p>날짜</p>
-      <p>상세내용</p>
-    </div>
-  );
-}
-
 function App() {
   // 자료를 잠깐 보관,저장할 땐 state 써도 된다
   // 1. import{useState} 2.useState{보관할 자료} 3.let[작명,작명]
@@ -118,8 +108,19 @@ function App() {
       {/* --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---  */}
       {
         //삼항연산자 -> 조건식 ? 참일때 실행할 코드 : 거짓일 때 실행할 코드
-        modal == true ? <Modal /> : null
+        modal == true ? <Modal title={title} /> : null
       }
+    </div>
+  );
+}
+
+function Modal(props) {
+  return (
+    <div className="modal">
+      <h4>{props.title[0]}</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+      <button>글수정</button>
     </div>
   );
 }
