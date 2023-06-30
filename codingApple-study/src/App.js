@@ -1,6 +1,7 @@
 /* eslint-disable */ // lint 끄는 기능
 import { useState } from "react";
 import "./App.css";
+import { getValue } from "@testing-library/user-event/dist/utils";
 
 // --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---
 // 다른 함수 밖에 만들어라
@@ -22,6 +23,7 @@ function App() {
   let [like, setLike] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
   let [modalTitle, setModalTitle] = useState(0);
+  let [inputValue, setInputValue] = useState("");
   // [1, 2, 3].map(function (a) {
   //   return "1234512345";
   // });
@@ -92,7 +94,8 @@ function App() {
             >
               {title[i]}
               <span
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   let copy = { ...like };
                   copy[i] = copy[i] + 1;
                   setLike(copy);
@@ -106,7 +109,14 @@ function App() {
           </div>
         );
       })}
-
+      {/* 이벤트 핸들러들은 여러가지 존재한다. onClick={}, onChange={}, onInput={} .... */}
+      {/* (정보) state변경함수는 늦게처리됨 */}
+      <input
+        onChange={(e) => {
+          setInputValue(e.target.value); // 늦게처림됨(전문용어로 비동기처리)
+          console.log(inputValue);
+        }}
+      />
       {/* --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---  */}
       {
         //삼항연산자 -> 조건식 ? 참일때 실행할 코드 : 거짓일 때 실행할 코드
