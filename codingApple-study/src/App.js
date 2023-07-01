@@ -106,6 +106,15 @@ function App() {
               {like[i]}
             </h4>
             <p>2월 17일 발행</p>
+            <button
+              onClick={() => {
+                let copy = [...title];
+                copy.splice(i, 1);
+                setTitle(copy);
+              }}
+            >
+              삭제
+            </button>
           </div>
         );
       })}
@@ -117,6 +126,15 @@ function App() {
           console.log(inputValue);
         }}
       />
+      <button
+        onClick={() => {
+          let copy = [...title];
+          copy.unshift(inputValue);
+          setTitle(copy);
+        }}
+      >
+        글 등록
+      </button>
       {/* --- Component: 많은 div들을 한 단어로 줄이고 싶으면 ---  */}
       {
         //삼항연산자 -> 조건식 ? 참일때 실행할 코드 : 거짓일 때 실행할 코드
