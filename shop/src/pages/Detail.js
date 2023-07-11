@@ -1,18 +1,10 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-let YellowBtn = styled.button`
-  background: ${(props) => props.bg};
-  color: ${(props) => (props.bg == "blue" ? "white" : "black")};
-  padding: 10px;
-`;
-
-let Box = styled.div`
-  background: grey;
-  padding: 20px;
-`;
-
 function Detail(props) {
+  useEffect(() => {});
+
   let { id } = useParams();
   let searchItem = props.shoes.find(function (x) {
     return x.id == id;
@@ -20,9 +12,7 @@ function Detail(props) {
 
   return (
     <div className="container">
-      <Box>
-        <YellowBtn bg="blue">버튼</YellowBtn>
-      </Box>
+      <div className="alert alert-warning">2초이내 구매시 할인</div>
       <div className="row">
         <div className="col-md-6">
           <img
