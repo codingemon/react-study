@@ -4,6 +4,7 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./pages/Detail.js";
+import axios from "axios";
 
 function App() {
   let [shoes] = useState(data);
@@ -66,18 +67,24 @@ function App() {
                   })}
                 </div>
               </div>
+              <button
+                onClick={() => {
+                  axios
+                    .get("https://codingapple1.github.io/shop/data2.json")
+                    .then((결과) => {
+                      console.log(결과.data);
+                    })
+                    .catch(() => {
+                      console.log("실패했습니다.");
+                    });
+                }}
+              >
+                버튼
+              </button>
             </>
           }
         />
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
-        <Route path="/about" element={<About />}>
-          <Route path="member" element={<div>멤버임</div>} />
-          <Route path="location" element={<div>위치정보임</div>} />
-        </Route>
-        <Route path="event" element={<Event />}>
-          <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>} />
-          <Route path="two" element={<p>생일기념 쿠폰받기</p>} />
-        </Route>
         <Route path="*" element={<div>없는 페이지 입니다.</div>} />
       </Routes>
     </div>
