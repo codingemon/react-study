@@ -7,7 +7,7 @@ import Detail from "./pages/Detail.js";
 import axios from "axios";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   let navigate = useNavigate(); // 페이지 이동을 도와준다.
 
   return (
@@ -73,13 +73,15 @@ function App() {
                     .get("https://codingapple1.github.io/shop/data2.json")
                     .then((결과) => {
                       console.log(결과.data);
+                      let copy = [...shoes, ...결과.data];
+                      setShoes(copy);
                     })
                     .catch(() => {
                       console.log("실패했습니다.");
                     });
                 }}
               >
-                버튼
+                더보기
               </button>
             </>
           }
