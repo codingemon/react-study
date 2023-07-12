@@ -3,16 +3,39 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 function Detail(props) {
-  useEffect(() => {});
-
   let { id } = useParams();
+  let [count, setCount] = useState(0);
   let searchItem = props.shoes.find(function (x) {
     return x.id == id;
   });
+  let [alert, setAlert] = useState(true);
+  let [num, setNum] = useState("");
+
+  useEffect(() => {
+    let a = setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+    return () => {
+      clearTimeout(a);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isNaN(num) == true) {
+      alert("그러지마세요");
+    }
+  }, [num]);
 
   return (
     <div className="container">
-      <div className="alert alert-warning">2초이내 구매시 할인</div>
+      {alert == true ? (
+        <div className="alert alert-warning">2초이내 구매시 할인</div>
+      ) : null}
+      <input
+        onChange={(e) => {
+          setNum(e.target.value);
+        }}
+      />
       <div className="row">
         <div className="col-md-6">
           <img
