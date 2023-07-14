@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import "./App.css";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import data from "./data.js";
@@ -6,8 +6,11 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./pages/Detail.js";
 import axios from "axios";
 
+export let Context1 = createContext(); // state 보관함
+
 function App() {
   let [shoes, setShoes] = useState(data);
+  let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate(); // 페이지 이동을 도와준다.
 
   return (
@@ -86,7 +89,14 @@ function App() {
             </>
           }
         />
-        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route
+          path="/detail/:id"
+          element={
+            <Context1.Provider value={{ 재고, shoes }}>
+              <Detail shoes={shoes} />
+            </Context1.Provider>
+          }
+        />
         <Route path="*" element={<div>없는 페이지 입니다.</div>} />
       </Routes>
     </div>
