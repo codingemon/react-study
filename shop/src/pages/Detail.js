@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { Nav } from "react-bootstrap";
 
 function Detail(props) {
   let { id } = useParams();
@@ -10,6 +11,7 @@ function Detail(props) {
   });
   let [alert, setAlert] = useState(true);
   let [num, setNum] = useState("");
+  let [tab, setTab] = useState(0);
 
   useEffect(() => {
     let a = setTimeout(() => {
@@ -31,11 +33,6 @@ function Detail(props) {
       {alert == true ? (
         <div className="alert alert-warning">2초이내 구매시 할인</div>
       ) : null}
-      <input
-        onChange={(e) => {
-          setNum(e.target.value);
-        }}
-      />
       <div className="row">
         <div className="col-md-6">
           <img
@@ -50,8 +47,51 @@ function Detail(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
+      <Nav variant="tabs" defaultActiveKey="link0">
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTab(0);
+            }}
+            eventKey="link0"
+          >
+            버튼0
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTab(1);
+            }}
+            eventKey="link1"
+          >
+            버튼1
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTab(2);
+            }}
+            eventKey="link2"
+          >
+            버튼2
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <TabContent tab={tab} />
     </div>
   );
+}
+
+function TabContent({ tab }) {
+  if (tab == 0) {
+    return <div>내용0</div>;
+  } else if (tab == 1) {
+    return <div>내용1</div>;
+  } else if (tab == 2) {
+    return <div>내용2</div>;
+  }
 }
 
 export default Detail;
