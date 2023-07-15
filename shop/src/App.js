@@ -5,6 +5,7 @@ import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./pages/Detail.js";
 import axios from "axios";
+import Cart from "./pages/Cart.js";
 
 export let Context1 = createContext(); // state 보관함
 
@@ -98,6 +99,7 @@ function App() {
           }
         />
         <Route path="*" element={<div>없는 페이지 입니다.</div>} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
