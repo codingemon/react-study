@@ -1,17 +1,22 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import user from "./store/useSlice.js";
 
-let user = createSlice({
-  name: "user",
-  initialState: "kim",
-  reducers: {
-    changeName(state) {
-      return "john " + state;
-    },
-  },
-});
+// useSlice.js로 보냄
+// let user = createSlice({
+//   name: "user",
+//   initialState: { name: "lee", age: 29 },
+//   reducers: {
+//     changeName(state) {
+//       state.name = "choi";
+//     },
+//     increase(state, action) {
+//       state.age += action.payload;
+//     },
+//   },
+// });
 
 //state 변경함수 남음
-export let { changeName } = user.actions;
+// export let { changeName, increase } = user.actions;
 
 let cart = createSlice({
   name: "cart",
