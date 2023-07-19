@@ -35,12 +35,18 @@ function App() {
               </Nav.Link>
               <Nav.Link
                 onClick={() => {
-                  navigate("/detail");
+                  navigate("/Cart");
                 }}
               >
                 장바구니
               </Nav.Link>
-              <Nav.Link href="#movie">극장판</Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/detail/0");
+                }}
+              >
+                상세페이지
+              </Nav.Link>
               <NavDropdown title="메뉴" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">
                   도라에몽소개
