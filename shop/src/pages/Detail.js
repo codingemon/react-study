@@ -20,6 +20,15 @@ function Detail(props) {
   let dispatch = useDispatch();
 
   useEffect(() => {
+    let 꺼낸거 = localStorage.getItem("watched");
+    꺼낸거 = JSON.parse(꺼낸거);
+    꺼낸거.push(searchItem.id);
+    꺼낸거 = new Set(꺼낸거);
+    꺼낸거 = Array.from(꺼낸거);
+    localStorage.setItem("watched", JSON.stringify(꺼낸거));
+  }, []);
+
+  useEffect(() => {
     setFade2("end");
     return () => {
       setFade2("");

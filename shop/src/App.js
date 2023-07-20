@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import data from "./data.js";
@@ -10,13 +10,13 @@ import Cart from "./pages/Cart.js";
 export let Context1 = createContext(); // state 보관함
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify([]));
+  }, []);
+
   let [shoes, setShoes] = useState(data);
   let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate(); // 페이지 이동을 도와준다.
-  let obj = { name: "kim" };
-  localStorage.setItem("data", JSON.stringify(obj));
-  let 꺼낸거 = localStorage.getItem("data");
-  console.log(JSON.parse(꺼낸거).name);
 
   return (
     <div className="App">
