@@ -24,13 +24,17 @@ function App() {
     return axios
       .get("https://codingapple1.github.io/userdata.json")
       .then((a) => {
+        console.log("오쳥됨"); // refetch
         return a.data;
       });
+    {
+      staleTime: 2000;
+    } // refetch 간격
   });
 
-  result.data;
-  result.isLoading;
-  result.error;
+  // result.data; // 성공 했을때
+  // result.isLoading; // 로딩중일때 트루
+  // result.error; // 실패했을 때 트루
 
   return (
     <div className="App">
@@ -77,8 +81,9 @@ function App() {
             </Nav>
           </Navbar.Collapse>
           <Nav className="ms-auto">
-            반가워요 노진
-            {result.isLodaing ? "로딩 중 " : result.data.name}
+            {result.isLoading && "로딩중"}
+            {result.error && "에러발생"}
+            {result.data && result.data.name}
           </Nav>
         </Container>
       </Navbar>
@@ -87,7 +92,6 @@ function App() {
           path="/"
           element={
             <>
-              {" "}
               <div className="main-bg"></div>
               <div className="container">
                 <div className="row">
