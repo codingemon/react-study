@@ -6,6 +6,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./pages/Detail.js";
 import axios from "axios";
 import Cart from "./pages/Cart.js";
+import { useQuery } from "react-query";
 
 export let Context1 = createContext(); // state 보관함
 
@@ -17,6 +18,19 @@ function App() {
   let [shoes, setShoes] = useState(data);
   let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate(); // 페이지 이동을 도와준다.
+
+  // react-query 이용해서 ajax 요청하면
+  let result = useQuery("작명", () => {
+    return axios
+      .get("https://codingapple1.github.io/userdata.json")
+      .then((a) => {
+        return a.data;
+      });
+  });
+
+  result.data;
+  result.isLoading;
+  result.error;
 
   return (
     <div className="App">
@@ -62,9 +76,12 @@ function App() {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+          <Nav className="ms-auto">
+            반가워요 노진
+            {result.isLodaing ? "로딩 중 " : result.data.name}
+          </Nav>
         </Container>
       </Navbar>
-
       <Routes>
         <Route
           path="/"
