@@ -1,15 +1,29 @@
-import React from "react";
+import React, { memo, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addCount } from "./../store.js";
 
+let Child = memo(function () {
+  console.log("재렌더링");
+  return <div>자식임</div>;
+});
+
 function Cart() {
   let state = useSelector((state) => state);
   let dispatch = useDispatch(); // store,js로 요청을 보내주는 함수
+  let [count, setCount] = useState(0);
 
   return (
     <div>
       <h6>
+        <Child count={count}></Child>
+        <button
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          +
+        </button>
         {state.user.name} {state.user.age} 의 장바구니
       </h6>
       <Table>
