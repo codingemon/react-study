@@ -7,7 +7,6 @@ import { Context1 } from "./../App.js";
 
 function Detail(props) {
   let { 재고, shoes } = useContext(Context1); // 보관함 해체 해주는 함수
-
   let { id } = useParams();
   let [count, setCount] = useState(0);
   let searchItem = props.shoes.find(function (x) {
