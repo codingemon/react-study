@@ -3,14 +3,14 @@ import "./App.css";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-// import Detail from "./pages/Detail.js";
+import Detail from "./pages/Detail.js";
 import axios from "axios";
-// import Cart from "./pages/Cart.js";
+import Cart from "./pages/Cart.js";
 import { useQuery } from "react-query";
 
 // 필요할때 import 해주세요
-const Detail = lazy(() => import("./routes/Detail.js"));
-const Cart = lazy(() => import("./routes/Cart.js"));
+// const Detail = lazy(() => import("./routes/Detail.js"));
+// const Cart = lazy(() => import("./routes/Cart.js"));
 
 export let Context1 = createContext(); // state 보관함
 
@@ -88,54 +88,52 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-      <Suspense fallback={<div>로딩중</div>}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <div className="main-bg"></div>
-                <div className="container">
-                  <div className="row">
-                    {/* <Card shoes={shoes[1]} i={2}></Card>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="main-bg"></div>
+              <div className="container">
+                <div className="row">
+                  {/* <Card shoes={shoes[1]} i={2}></Card>
           <Card shoes={shoes[2]} i={3}></Card> */}
-                    {shoes.map((a, i) => {
-                      return <Card shoes={shoes[i]} i={i}></Card>;
-                    })}
-                  </div>
+                  {shoes.map((a, i) => {
+                    return <Card shoes={shoes[i]} i={i}></Card>;
+                  })}
                 </div>
-                <button
-                  onClick={() => {
-                    axios
-                      .get("https://codingapple1.github.io/shop/data2.json")
-                      .then((결과) => {
-                        console.log(결과.data);
-                        let copy = [...shoes, ...결과.data];
-                        setShoes(copy);
-                      })
-                      .catch(() => {
-                        console.log("실패했습니다.");
-                      });
-                  }}
-                >
-                  더보기
-                </button>
-              </>
-            }
-          />
+              </div>
+              <button
+                onClick={() => {
+                  axios
+                    .get("https://codingapple1.github.io/shop/data2.json")
+                    .then((결과) => {
+                      console.log(결과.data);
+                      let copy = [...shoes, ...결과.data];
+                      setShoes(copy);
+                    })
+                    .catch(() => {
+                      console.log("실패했습니다.");
+                    });
+                }}
+              >
+                더보기
+              </button>
+            </>
+          }
+        />
 
-          <Route
-            path="/detail/:id"
-            element={
-              <Context1.Provider value={{ 재고, shoes }}>
-                <Detail shoes={shoes} />
-              </Context1.Provider>
-            }
-          />
-          <Route path="*" element={<div>없는 페이지 입니다.</div>} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </Suspense>
+        <Route
+          path="/detail/:id"
+          element={
+            <Context1.Provider value={{ 재고, shoes }}>
+              <Detail shoes={shoes} />
+            </Context1.Provider>
+          }
+        />
+        <Route path="*" element={<div>없는 페이지 입니다.</div>} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
     </div>
   );
 }
