@@ -32,7 +32,6 @@ function App() {
         return a.data;
       });
   });
-
   // result.data; // 성공 했을때
   // result.isLoading; // 로딩중일때 트루
   // result.error; // 실패했을 때 트루

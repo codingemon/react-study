@@ -7,7 +7,6 @@ import { addCount } from "./../store.js";
 //   console.log("재렌더링");
 //   return <div>자식임</div>;
 // });
-
 // function 함수(){
 //   return 반복문 10억번 돌린결과
 // }
