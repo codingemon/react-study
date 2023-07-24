@@ -35,7 +35,6 @@ function App() {
   // result.data; // 성공 했을때
   // result.isLoading; // 로딩중일때 트루
   // result.error; // 실패했을 때 트루
-
   return (
     <div className="App">
       <Navbar expand="lg" className="bg-body-tertiary">
