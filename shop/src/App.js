@@ -1,4 +1,12 @@
-import { createContext, Suspense, useEffect, useState, lazy } from "react";
+import {
+  createContext,
+  Suspense,
+  useEffect,
+  useState,
+  lazy,
+  useTransition,
+  useDeferredValue,
+} from "react";
 import "./App.css";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import data from "./data.js";
@@ -19,6 +27,13 @@ function App() {
     localStorage.setItem("watched", JSON.stringify([]));
   }, []);
 
+  // useTransition
+  let a = new Array(10000).fill(0);
+  let [name, setName] = useState("");
+  let [isPending, startTransition] = useTransition();
+  // useDefrredValue
+  let state = useDeferredValue(name);
+
   let [shoes, setShoes] = useState(data);
   let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate(); // 페이지 이동을 도와준다.
@@ -37,6 +52,18 @@ function App() {
   // result.error; // 실패했을 때 트루
   return (
     <div className="App">
+      <input
+        onChange={(e) => {
+          startTransition(() => {
+            setName(e.target.value);
+          });
+        }}
+      />
+      {isPending
+        ? "로딩중"
+        : a.map(() => {
+            return <div>{name}</div>;
+          })}
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand onClick={() => navigate("/")}>
