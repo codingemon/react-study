@@ -9,7 +9,7 @@ const App = () => {
     uselessValue: null,
   });
 
-  // input 수정을 위한 함수
+  // input 수정을 위한 함수.
   const onChange = useCallback(
     (e) => {
       const { name, value } = e.target;
