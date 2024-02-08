@@ -1,37 +1,37 @@
 // 2. 12. 배열
 
 // forEach
-const arr = [1, 2, 3, 4];
-arr.forEach((elm) => console.log(elm));
+// const arr = [1, 2, 3, 4];
+// arr.forEach((elm) => console.log(elm));
 // 순회할 수 있게 만들어주는 내장함수(메소드)
 
 //밑 코드에서 map을 사용하면?
-const arr = [1, 2, 3, 4];
-const newArr = [];
-arr.forEach((elm) => {
-  newArr.push(elm * 2);
-});
-console.log(newArr);
+// const arr = [1, 2, 3, 4];
+// const newArr = [];
+// arr.forEach((elm) => {
+//   newArr.push(elm * 2);
+// });
+// console.log(newArr);
 
-// map
-const arr = [1, 2, 3, 4];
-const newArr = arr.map((elm) => {
-  return elm * 2;
-});
+// // map
+// const arr = [1, 2, 3, 4];
+// const newArr = arr.map((elm) => {
+//   return elm * 2;
+// });
 
 console.log(newArr);
 // 원본 배열에 모든 요소를 순회하면 어떤 연산을 해서 return 값을 따로 배열로 추려내서 반환을 할 수 있게 해주는 함수
 
-// includes
-const arr = [1, 2, 3, 4];
+// // includes
+// const arr = [1, 2, 3, 4];
 
-let number = 3;
+// let number = 3;
 
-arr.forEach((elm) => {
-  if (elm === number) {
-    console.log(true);
-  }
-});
+// arr.forEach((elm) => {
+//   if (elm === number) {
+//     console.log(true);
+//   }
+// });
 
 const arr = [1, 2, 3, 4];
 
