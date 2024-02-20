@@ -1,11 +1,11 @@
 import DiaryItem from "./DiaryItem";
-const DiaryList = ({ dummyList }) => {
+const DiaryList = ({ DiaryList }) => {
   return (
     <div className="DiaryList">
       <h2>일기 리스트</h2>
-      <h4>{dummyList.length}개의 일기가 있습니다.</h4>
+      <h4>{DiaryList.length}개의 일기가 있습니다.</h4>
       <div>
-        {dummyList.map((it) => (
+        {DiaryList.map((it) => (
           <DiaryItem key={it.id} {...it} />
         ))}
       </div>
