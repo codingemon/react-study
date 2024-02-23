@@ -23,7 +23,7 @@ const DiaryItem = ({
     }
   };
 
-  // 수정취소를 누를때 앞에 수정하고 있던 폰트를 다시 원상복귀 시켜줌
+  // 수정취소를 누를때 앞에 수정하고 있던 폰트를 다시 원상복귀 시켜줌.
   const handleQuitEdit = () => {
     setIsEdit(false);
     setLocalContent(content);
