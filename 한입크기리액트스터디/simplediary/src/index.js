@@ -5,6 +5,7 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  // App 빼고 StrictMode 개발모드를 제거하면 useEffect 사용할때 두번 실행되지 않는다.
   <React.StrictMode>
     <App />
   </React.StrictMode>
