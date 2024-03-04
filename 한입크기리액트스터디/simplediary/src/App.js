@@ -4,6 +4,7 @@ import DiaryList from "./DiaryList";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 function App() {
+  // 계속 반복되서 렌더링됨
   const [data, setData] = useState([]);
 
   const dataId = useRef(0);
