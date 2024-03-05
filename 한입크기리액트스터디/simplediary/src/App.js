@@ -1,10 +1,9 @@
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 function App() {
-  // 계속 반복되서 렌더링됨
   const [data, setData] = useState([]);
 
   const dataId = useRef(0);
@@ -31,7 +30,7 @@ function App() {
     getData();
   }, []);
 
-  const onCreate = (anthor, content, emotion) => {
+  const onCreate = useCallback((anthor, content, emotion) => {
     const created_date = new Date().getTime();
     const newItem = {
       anthor,
@@ -41,8 +40,8 @@ function App() {
       id: dataId.current,
     };
     dataId.current += 1;
-    setData([newItem, ...data]);
-  };
+    setData((data) => [newItem, ...data]);
+  }, []);
 
   const onRemove = (targetId) => {
     const newDiaryList = data.filter((it) => it.id !== targetId);
