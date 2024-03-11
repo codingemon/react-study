@@ -1,4 +1,5 @@
 import "./Header.css";
+import { memo } from "react";
 
 const Header = () => {
   return (
@@ -8,5 +9,6 @@ const Header = () => {
     </div>
   );
 };
+const memoizedHeader = memo(Header);
 
-export default Header;
+export default memoizedHeader;
