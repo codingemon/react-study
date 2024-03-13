@@ -83,53 +83,6 @@ function App() {
 
   return (
     <>
-      {/* <Header
-        title={"Header"}
-        leftChild={<Button text={"Left"} />}
-        rightChild={<Button text={"Right"} />}
-      />
-      <Button
-        text={"123"}
-        type={"DEFAULT"}
-        onClick={() => {
-          console.log("123번 버튼 클릭");
-        }}
-      />
-      <Button
-        text={"123"}
-        type={"POSITIVE"}
-        onClick={() => {
-          console.log("123번 버튼 클릭");
-        }}
-      />
-      <Button
-        text={"123"}
-        type={"NEGATIVE"}
-        onClick={() => {
-          console.log("123번 버튼 클릭");
-        }}
-      /> */}
-      <button
-        onClick={() => {
-          onCreate(new Date().getTime(), 1, "hellol");
-        }}
-      >
-        일기 추가 테스트
-      </button>
-      <button
-        onClick={() => {
-          onUpdate(1, new Date().getTime(), 3, "수정된 일기입니다.");
-        }}
-      >
-        일기 수정 테스트
-      </button>
-      <button
-        onClick={() => {
-          onDelete(1);
-        }}
-      >
-        일기 삭제 테스트
-      </button>
       <DiarySataeContext.Provider value={data}>
         <DiaryDispatchContext.Provider
           value={{
