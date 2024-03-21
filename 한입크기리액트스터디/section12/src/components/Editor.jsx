@@ -4,7 +4,6 @@ import Button from "./Button";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { emotionList } from "../util/contants";
-import { getStringedDate } from "../util/get-stringed-date";
 
 const Editor = ({ onSubmit, initData }) => {
   const nav = useNavigate();
