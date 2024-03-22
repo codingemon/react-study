@@ -40,7 +40,7 @@ export const DiarySataeContext = createContext();
 export const DiaryDispatchContext = createContext();
 
 function App() {
-  const [isLoding, setIsLoding] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
 
@@ -52,7 +52,7 @@ function App() {
     }
     const parsedData = JSON.parse(storedData);
     if (!Array.isArray(parsedData)) {
-      setIsLoding(false);
+      setIsLoading(false);
       return;
     }
 
@@ -69,7 +69,7 @@ function App() {
       type: "INIT",
       data: parsedData,
     });
-    setIsLoding(false);
+    setIsLoading(false);
   }, []);
 
   // 새로운 일기 추가
@@ -106,9 +106,10 @@ function App() {
     });
   };
 
-  if (isLoding) {
-    return <div>데이터 로딩중입니다...</div>;
-  }
+  // error로 잠시 봉인
+  // if (isLoading) {
+  //   return <div>데이터 로딩중입니다...</div>;
+  // }
 
   return (
     <>
