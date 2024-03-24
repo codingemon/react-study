@@ -20,7 +20,7 @@ const New = () => {
     <div>
       <Header
         title={"새 일기 쓰기"}
-        // nav -1 은 페이지를 뒤로 이동시켜준다
+        // nav -1 은 페이지를 뒤로 이동시켜준다.
         leftChild={<Button onClick={() => nav(-1)} text={"< 뒤로 가기"} />}
       />
       <Editor onSubmit={onSubmit} />
