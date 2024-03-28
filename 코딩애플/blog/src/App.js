@@ -11,7 +11,7 @@ function App() {
   ]);
   let [좋아요, set좋아요] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
-  let [여자옷, set여자옷] = useState("여자코트 추천");
+  let [title, setTitle] = useState(0);
 
   return (
     <div className="App">
@@ -24,6 +24,7 @@ function App() {
             <h4
               onClick={() => {
                 setModal(!modal);
+                setTitle(i);
               }}
             >
               {글제목[i]}
@@ -43,8 +44,30 @@ function App() {
         );
       })}
 
+      <button
+        onClick={() => {
+          setTitle(0);
+        }}
+      >
+        글제목0
+      </button>
+      <button
+        onClick={() => {
+          setTitle(1);
+        }}
+      >
+        글제목1
+      </button>
+      <button
+        onClick={() => {
+          setTitle(2);
+        }}
+      >
+        글재목2
+      </button>
+
       {modal == true ? (
-        <Modal set글제목={set글제목} 글제목={글제목} 여자옷={여자옷} />
+        <Modal title={title} set글제목={set글제목} 글제목={글제목} />
       ) : null}
     </div>
   );
@@ -53,7 +76,7 @@ function App() {
 const Modal = (props) => {
   return (
     <div className="modal">
-      <h4>{props.글제목[0]}</h4>
+      <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
       <button>글 수정</button>
