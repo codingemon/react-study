@@ -41,7 +41,7 @@ function App() {
               {좋아요[i]}
             </h4>
             <p>2월 17일 발행</p>
-            <button
+            {/* <button
               onClick={() => {
                 let copy글제목 = [...글제목];
                 let copy좋아요 = [...좋아요];
@@ -49,6 +49,15 @@ function App() {
                 copy좋아요.splice(i, 1); // 삭제된 글에 대한 좋아요 수도 함께 삭제
                 set글제목(copy글제목);
                 set좋아요(copy좋아요);
+              }}
+            >
+              삭제
+            </button> */}
+            <button
+              onClick={() => {
+                let copy = [...글제목];
+                copy.splice(i, 1);
+                set글제목(copy);
               }}
             >
               삭제
@@ -62,11 +71,25 @@ function App() {
           setInputValue(e.target.value);
         }}
       />
+      {/* 내 코드 */}
+      {/* <button
+        onClick={() => {
+          let copy글제목 = [...글제목];
+          let copy좋아요 = [...좋아요];
+          set글제목([...copy글제목, inputValue]);
+          set좋아요([...copy좋아요, 0]); // 추가된 글에 대한 좋아요 수 초기화
+          setInputValue(""); // 입력값 초기화
+        }}
+      >
+        추가
+      </button> */}
+
+      {/* 코딩애플코드  */}
       <button
         onClick={() => {
-          set글제목([...글제목, inputValue]);
-          set좋아요([...좋아요, 0]); // 추가된 글에 대한 좋아요 수 초기화
-          setInputValue(""); // 입력값 초기화
+          let copy = [...글제목];
+          copy.unshift(inputValue);
+          set글제목(copy);
         }}
       >
         추가
