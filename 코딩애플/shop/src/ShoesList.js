@@ -1,6 +1,6 @@
 import { useState } from "react";
 import data from "./data";
-
+// 직접 만든 컴포넌트
 const ShoesList = () => {
   const [shoes, setShoes] = useState(data);
   return shoes.map(function (a, i) {
