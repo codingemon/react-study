@@ -2,7 +2,9 @@ import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
 import "./App.css";
 import { useState } from "react";
 import data from "./data";
-import ShoesList from "./ShoesList";
+// import ShoesList from "./ShoesList";
+import { Routes, Route, Link } from "react-router-dom";
+import DetailList from "./DetailList";
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -13,20 +15,30 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">CodingEmonShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">EmonGoods</Nav.Link>
+            <Link to="/">홈</Link>
+            <Link to="detail">상세페이지</Link>
           </Nav>
         </Container>
       </Navbar>
 
-      <div className="main-bg"></div>
-      <div className="container">
-        <div className="row">
-          {shoes.map((a, i) => {
-            return <Card shoes={shoes[i]} i={i + 1} />;
-          })}
-        </div>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="main-bg"></div>
+              <div className="container">
+                <div className="row">
+                  {shoes.map((a, i) => {
+                    return <Card shoes={shoes[i]} i={i + 1} />;
+                  })}
+                </div>
+              </div>
+            </>
+          }
+        />
+        <Route path="detail" element={<DetailList />} />
+      </Routes>
     </div>
   );
 }
