@@ -6,6 +6,7 @@ import data from "./data";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import DetailList from "./routes/DetailList";
 import About from "./routes/About";
+import Event from "./routes/Event";
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -63,6 +64,10 @@ function App() {
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버</div>} />
           <Route path="location" />
+        </Route>
+        <Route path="/event" element={<Event />}>
+          <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
+          <Route path="two" element={<div>생일기념 쿠폰받기</div>} />
         </Route>
         <Route path="*" element={<div>에러예요</div>} />
       </Routes>
