@@ -15,9 +15,13 @@ import styled from "styled-components";
 // `;
 
 const DetailList = (props) => {
+  let [alert, setAlert] = useState(true);
+
   useEffect(() => {
-    console.log("안녕");
-  });
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+  }, [count]);
 
   let [count, setCount] = useState(0);
 
@@ -28,6 +32,9 @@ const DetailList = (props) => {
 
   return (
     <div className="container">
+      {alert == true ? (
+        <div className="alert alert-warning">2초이내 구매시 할인</div>
+      ) : null}
       <button
         onClick={() => {
           setCount(count + 1);
