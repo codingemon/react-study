@@ -7,6 +7,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import DetailList from "./routes/DetailList";
 import About from "./routes/About";
 import Event from "./routes/Event";
+import axios from "axios";
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -57,6 +58,20 @@ function App() {
                   })}
                 </div>
               </div>
+              <button
+                onClick={() => {
+                  axios
+                    .get("https://codingapple1.github.io/shop/data2.json")
+                    .then((result) => {
+                      console.log(result.data);
+                    })
+                    .catch(() => {
+                      console.log("실패");
+                    });
+                }}
+              >
+                BUTTON
+              </button>
             </>
           }
         />
@@ -65,7 +80,6 @@ function App() {
           <Route path="member" element={<div>멤버</div>} />
           <Route path="location" />
         </Route>
-
         <Route path="*" element={<div>에러예요</div>} />
       </Routes>
     </div>

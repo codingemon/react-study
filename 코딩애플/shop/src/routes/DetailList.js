@@ -34,11 +34,11 @@ const DetailList = (props) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (isNaN(num) == true) {
-      alert("숫자를 입력하세요");
-    }
-  }, [num]);
+  // useEffect(() => {
+  //   if (isNaN(num) == true) {
+  //     alert("숫자를 입력하세요");
+  //   }
+  // }, [num]);
 
   return (
     <div className="container">
@@ -56,11 +56,11 @@ const DetailList = (props) => {
           />
         </div>
         <div className="col-md-6">
-          <input
+          {/* <input
             onChange={(e) => {
               setNum(e.target.value);
             }}
-          />
+          /> */}
           <h4 className="pt-5">{seachItem.title}</h4>
           <p>{seachItem.content}</p>
           <p>{seachItem.price}원</p>
