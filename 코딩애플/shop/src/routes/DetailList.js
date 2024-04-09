@@ -16,32 +16,36 @@ import styled from "styled-components";
 
 const DetailList = (props) => {
   let [alert, setAlert] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setAlert(false);
-    }, 2000);
-  }, [count]);
-
   let [count, setCount] = useState(0);
+  let [num, setNum] = useState("");
 
   let { id } = useParams();
   let seachItem = props.shoes.find((x) => {
     return x.id == id;
   });
 
+  useEffect(() => {
+    let a = setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(a);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isNaN(num) == true) {
+      alert("숫자를 입력하세요");
+    }
+  }, [num]);
+
   return (
     <div className="container">
       {alert == true ? (
         <div className="alert alert-warning">2초이내 구매시 할인</div>
       ) : null}
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        버튼
-      </button>
+
       {/* <Btn bg="blue">버튼</Btn> */}
       {/* <Btn bg="yellow">버튼</Btn> */}
       <div className="row">
@@ -52,6 +56,11 @@ const DetailList = (props) => {
           />
         </div>
         <div className="col-md-6">
+          <input
+            onChange={(e) => {
+              setNum(e.target.value);
+            }}
+          />
           <h4 className="pt-5">{seachItem.title}</h4>
           <p>{seachItem.content}</p>
           <p>{seachItem.price}원</p>
