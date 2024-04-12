@@ -66,6 +66,7 @@ function App() {
                       let copy = [...shoes, ...result.data];
                       setShoes(copy);
                     })
+
                     .catch(() => {
                       console.log("실패");
                     });
