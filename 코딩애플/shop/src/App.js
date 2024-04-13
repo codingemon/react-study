@@ -6,7 +6,6 @@ import data from "./data";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import DetailList from "./routes/DetailList";
 import About from "./routes/About";
-import Event from "./routes/Event";
 import axios from "axios";
 
 function App() {
