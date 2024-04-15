@@ -31,14 +31,14 @@ function App() {
                 navigate("/");
               }}
             >
-              홈
+              Home
             </Nav.Link>
             <Nav.Link
               onClick={() => {
                 navigate("detail");
               }}
             >
-              상세페이지
+              detail
             </Nav.Link>
           </Nav>
         </Container>
