@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
+import { Context1 } from "./../App.js";
+import { useContext } from "react";
+
 // let Btn = styled.button`
 //   background: ${(props) => props.bg};
 //   color: ${(props) => (props.bg == "blue" ? "white" : "black")};
@@ -16,6 +19,8 @@ import { Nav } from "react-bootstrap";
 // `;
 
 const DetailList = (props) => {
+  let { stock, shoes } = useContext(Context1);
+
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(0);
   let [num, setNum] = useState("");
@@ -119,6 +124,7 @@ function TabContent({ tab }) {
   // }
 
   let [fade, setFade] = useState("");
+  let { stock } = useContext(Context1);
 
   useEffect(() => {
     let time = setTimeout(() => {
@@ -133,7 +139,7 @@ function TabContent({ tab }) {
 
   return (
     <div className={"start " + fade}>
-      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab]}
+      {[<div>{stock}</div>, <div>내용1</div>, <div>내용2</div>][tab]}
     </div>
   );
 }

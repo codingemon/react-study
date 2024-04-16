@@ -7,10 +7,13 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import DetailList from "./routes/DetailList";
 import About from "./routes/About";
 import axios from "axios";
+import { createContext } from "react";
+
+export let Context1 = createContext();
 
 function App() {
   let [shoes, setShoes] = useState(data);
-
+  let [stock, setStock] = useState([10, 11, 12]);
   let navigate = useNavigate();
 
   return (
@@ -76,7 +79,14 @@ function App() {
             </>
           }
         />
-        <Route path="/detail/:id" element={<DetailList shoes={shoes} />} />
+        <Route
+          path="/detail/:id"
+          element={
+            <Context1.Provider value={{ stock, shoes }}>
+              <DetailList shoes={shoes} />
+            </Context1.Provider>
+          }
+        />
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버</div>} />
           <Route path="location" />
