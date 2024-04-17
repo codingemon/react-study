@@ -113,16 +113,6 @@ const DetailList = (props) => {
 };
 
 function TabContent({ tab }) {
-  // if (tab == 0) {
-  //   <div>내용0</div>;
-  // }
-  // if (tab == 1) {
-  //   <div>내용1</div>;
-  // }
-  // if (tab == 2) {
-  //   <div>내용2</div>;
-  // }
-
   let [fade, setFade] = useState("");
   let { stock } = useContext(Context1);
 
