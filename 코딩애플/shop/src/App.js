@@ -8,6 +8,7 @@ import DetailList from "./routes/DetailList";
 import About from "./routes/About";
 import axios from "axios";
 import { createContext } from "react";
+import Cart from "./routes/Cart";
 
 export let Context1 = createContext();
 
@@ -87,6 +88,7 @@ function App() {
             </Context1.Provider>
           }
         />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버</div>} />
           <Route path="location" />
