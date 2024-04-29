@@ -1,5 +1,6 @@
 import { Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeName } from "../store";
 
 const Cart = () => {
   // redux store에 있던 state 남음
@@ -7,10 +8,14 @@ const Cart = () => {
     return state;
   });
 
+  //   store.js에게 요청 보내는 함수
+  let dispatch = useDispatch();
+
   console.log(state);
 
   return (
     <div>
+      {state.user}의 장바구니
       <Table>
         <thead>
           <tr>
@@ -21,18 +26,25 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{state.stock2[0].id}</td>
-            <td>{state.stock2[0].name}</td>
-            <td>{state.stock2[0].count}</td>
-            <td>안녕</td>
-          </tr>
-          <tr>
-            <td>{state.stock2[1].id}</td>
-            <td>{state.stock2[1].name}</td>
-            <td>{state.stock2[1].count}</td>
-            <td>안녕</td>
-          </tr>
+          {state.cart.map((a, i) => {
+            return (
+              <tr key={i}>
+                <td>{state.cart[i].id}</td>
+                <td>{state.cart[i].name}</td>
+                <td>{state.cart[i].count}</td>
+                <td>안녕</td>
+                <td>
+                  <button
+                    onClick={() => {
+                      dispatch(changeName());
+                    }}
+                  >
+                    +
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>
